@@ -108,7 +108,7 @@ exports.mount = function(dev, path, options, callback) {
     if (error !== null) {
       callback({ "error": "exec error " + error });
     } else {
-      callback({ "OK": true });
+      callback(null, { "OK": true });
     }
   });
 }
@@ -133,7 +133,7 @@ exports.umount = function(path, isDevice, options, callback) {
   // See if it's mounted
   var mountInfo = this.isMounted(path,isDevice);
   if (!mountInfo.mounted) {
-    callback({"OK": true});
+    callback(null, {"OK": true});
     return;
   }
 
@@ -151,7 +151,7 @@ exports.umount = function(path, isDevice, options, callback) {
       if (options.removeDir) {
         fs.rmdirSync(mountInfo.mountpoint);
       }
-      callback({ "OK": true });
+      callback(null, { "OK": true });
     }
   });
 }
