@@ -62,10 +62,10 @@ Valid options:
 Example:
 
     // Mount /dev/sdc1 to /tmp/testmount
-    mountutil.mount("/dev/sdc1","/tmp/testmount", { "createDir": true }, function(result) {
-      if (result.error) {
+    mountutil.mount("/dev/sdc1","/tmp/testmount", { "createDir": true }, function(err, result) {
+      if (err) {
         // Something went wrong!
-        console.log(result.error);
+        console.log(err.error);
       } else {
         // mount succeeded - do stuff here
       }
@@ -94,10 +94,10 @@ Valid options:
 Example:
 
     // Unmount device mounted at /tmp/testmount and delete mountpoint
-    mountutil.umount("/tmp/testmount", false, { "removeDir": true }, function(result) {
-      if (result.error) {
+    mountutil.umount("/tmp/testmount", false, { "removeDir": true }, function(err, result) {
+      if (err) {
         // Something went wrong!
-        console.log(result.error);
+        console.log(err.error);
       } else {
         // umount succeeded - do stuff here
       }
